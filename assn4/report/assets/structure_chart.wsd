@@ -1,0 +1,57 @@
+@startuml structure_chart
+class tkinter.Frame
+class Info {
+  label
+  update(text)
+}
+
+class Ball {
+  canvas
+  x
+  y
+  color
+  radius
+  ball
+  x_target
+  y_target
+  move()
+  set_target(x_target, y_target)
+}
+
+class tkinter.Canvas
+
+class Board {
+  ROWS
+  COLS
+  WIDTH
+  HEIGHT
+  player
+  c
+  game_over
+  stat
+  root
+  info
+  curr_col
+  arrow
+  choice(event)
+  Connect4(event)
+  Horizontal()
+  Vertical()
+  Diagonal1()
+  Diagonal2()
+  Draw()
+  Finish(text)
+  quit()
+}
+
+
+
+tkinter.Frame <|-- Info
+tkinter.Canvas <|-- Board
+
+
+Board - Ball
+Info - Board
+
+
+@enduml

@@ -1,0 +1,5 @@
+20240001	Danielle Marsh	84	73
+20240002	Kim Minji	92	89
+20240003	Lee Hyein	57	62
+20240005	Hanni Pham	81	84
+20240008	Kang Haerin	58	68

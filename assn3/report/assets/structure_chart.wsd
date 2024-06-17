@@ -1,0 +1,87 @@
+@startuml structure_chart
+class UI {
+  title: str
+  lines: str[]
+
+  run(): None
+}
+class SelectUI {
+  actions: function[]
+  run(): None
+}
+class InfoUI {
+  labels: str[]
+  data: any[]
+  update(data: any[]): None
+}
+
+UI <|-- SelectUI
+UI <|-- InfoUI
+
+class SlotMachine {
+  money: int
+  recharge_count: int
+  total_earn_credit: int
+
+  main(): None
+  player_information(): None
+  select_slot_game(): None
+  recharge(): None
+  exit(): -1 | None
+}
+
+class BetController {
+  bet_minimum: int
+  bet: int
+
+  increase_bet(money: int): None
+  decrease_bet(): None
+}
+
+class SlotBase {
+  slot_machine: SlotMachine
+  bet_controller: BetController
+  name: str
+  symbols: str[]
+  win_multipliers: int[]
+
+  main(): None
+  increase_bet(): None
+  decrease_bet(): None
+  choices(): int[]
+  win_lose(choices: int[]): (bool, int)
+  spin(): None
+  help(): None
+  exit(): -1
+}
+
+class SingleLineSlot {
+  name: str
+  symbols: str[]
+  win_multipliers: int[]
+
+  choices(): int[]
+  win_lose(choices: int[]): (bool, int)
+  help(): None
+}
+
+class SingleLineWithWildSlot {
+  name: str
+  symbols: str[]
+  win_multipliers: int[]
+
+  choices(): int[]
+  win_lose(choices: int[]): (bool, int)
+  help(): None
+}
+
+SlotBase <|-- SingleLineSlot
+SlotBase <|-- SingleLineWithWildSlot
+SlotBase - BetController
+
+SlotMachine - SlotBase
+
+SlotMachine -- UI
+SlotBase -- UI
+
+@enduml
